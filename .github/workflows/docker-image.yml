@@ -14,6 +14,8 @@ jobs:
     strategy:
       matrix:
         versions: [3.2, 3.3]
+    env:
+      repo: "govpf/cypress"
     steps:
     -
       name: Checkout
@@ -37,11 +39,11 @@ jobs:
         pull: true
         push: true
         tags: |
-          govpf/cypress:${{ matrix.versions }}
+          ${{ env.repo }}:${{ matrix.versions }}
 
     - name: Update repo description
       uses: peter-evans/dockerhub-description@v2
       with:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
-        repository: govpf/cypress
         password: ${{ secrets.DOCKERHUB_PASSWORD }}
+        repository: "${{ env.repo }}"
