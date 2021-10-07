@@ -25,6 +25,6 @@ jobs:
         file: ./${{ matrix.versions }}/Dockerfile
         platforms: linux/amd64
         pull: true
-        push: true
+        push: false
         tags: |
           ${{ env.repo }}:${{ matrix.versions }}
