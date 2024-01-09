@@ -1,4 +1,4 @@
-FROM cypress/base:12.1.0
+FROM cypress/base:12.8.1
 
 ENV TZ Pacific/Tahiti
 ARG CYPRESS_VERSION="3.3.1"
