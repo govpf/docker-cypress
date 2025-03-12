@@ -9,10 +9,6 @@ RUN echo "$TZ" > /etc/timezone \
     && dpkg-reconfigure -f noninteractive tzdata \
     && apt-get update && apt-get install -y --no-install-recommends \
         git locales net-tools curl ca-certificates gnupg dirmngr \
-    && curl https://bin.gov.pf/artifactory/ca/casit.crt > /usr/local/share/ca-certificates/casit.crt \
-    && curl https://bin.gov.pf/artifactory/ca/casit-prod2.crt > /usr/local/share/ca-certificates/casit-prod2.crt \
-    && curl https://bin.gov.pf/artifactory/ca/cadsi-prod.crt > /usr/local/share/ca-certificates/cadsi-prod.crt \    
-    && update-ca-certificates \
     && locale-gen fr_FR.UTF-8 \
     && dpkg-reconfigure locales \
     && rm -rf /var/lib/apt/lists/* \
@@ -26,3 +22,6 @@ RUN echo "$TZ" > /etc/timezone \
             "yarn version:    $(yarn -v) \n" \
             "debian version:  $(cat /etc/debian_version) \n" \
             "user:            $(whoami) \n"
+
+COPY install_certs /tmp/install_certs
+RUN  bash -xe /tmp/install_certs
