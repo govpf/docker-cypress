@@ -1,6 +1,6 @@
 FROM cypress/base:24.18.1
 
-ENV TZ Pacific/Tahiti
+ENV TZ=Pacific/Tahiti
 ARG CYPRESS_VERSION="15.19.0"
 
 RUN echo "$TZ" > /etc/timezone \
@@ -13,7 +13,6 @@ RUN echo "$TZ" > /etc/timezone \
     && locale-gen fr_FR.UTF-8 \
     && dpkg-reconfigure locales \
     && rm -rf /var/lib/apt/lists/* \
-    && npm config -g set user $(whoami) \
     && npm install -g "cypress@${CYPRESS_VERSION}" jwt-decode \
     && cypress verify \
     && cypress cache path \
