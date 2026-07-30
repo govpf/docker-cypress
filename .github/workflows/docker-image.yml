@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        versions: [3.2, 3.3]
+        versions: [15.19]
     env:
       repo: "govpf/cypress"
     steps:
