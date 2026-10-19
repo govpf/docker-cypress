@@ -1,6 +1,6 @@
-FROM cypress/base:24.18.1
+FROM cypress/base:24.22.0
 
-LABEL govpf.fromimage="cypress/base:24.18.1"
+LABEL govpf.fromimage="cypress/base:24.22.0"
 LABEL govpf.category="testing"
 
 ENV TZ=Pacific/Tahiti
